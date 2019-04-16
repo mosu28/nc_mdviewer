@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>nc_mdviewer</id>
+    <id>mdviewer</id>
     <name>Md Viewer</name>
     <summary>MDファイルをいい感じに閲覧できるアプリ</summary>
     <description><![CDATA[指定したグループフォルダ直下のmdファイルを閲覧することに特化したアプリケーションです。]]></description>
