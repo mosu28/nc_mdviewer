@@ -1,0 +1,15 @@
+{
+    "name": "Md Viewer",
+    "description": "MDファイルをドキュメント風に閲覧できるアプリ",
+    "type": "project",
+    "license": "AGPL",
+    "authors": [
+        {
+            "name": "mosu"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    }
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>mdviewer</id>
+    <name>Md Viewer</name>
+    <summary>MDファイルをいい感じに閲覧できるアプリ</summary>
+    <description><![CDATA[指定したグループフォルダ直下のmdファイルを閲覧することに特化したアプリケーションです。]]></description>
+    <version>0.0.1</version>
+    <licence>agpl</licence>
+    <author mail="mosu.dev@gmail.com" >mosu</author>
+    <namespace>MdViewer</namespace>
+    <category>files</category>
+    <category>office</category>
+    <bugs>https://github.com/tibimosu/nc_mdviewer/issues</bugs>
+    <dependencies>
+        <nextcloud min-version="15" max-version="15"/>
+    </dependencies>
+    <navigations>
+        <navigation>
+            <name>Md Viewer</name>
+            <route>mdviewer.page.index</route>
+        </navigation>
+    </navigations>
+</info>
