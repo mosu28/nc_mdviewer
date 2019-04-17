@@ -5,19 +5,31 @@ export default class Content extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      html: ''
+      docName: this.props.docName,
+      srcPath: '',
+      text: ''
     }
   }
-  componentDidUpdate() {
+  parseImageSrcs() {
     const imgTags = document.querySelectorAll('#md-text img')
     for (const [index, value] of imgTags.entries()) {
       const originSrc = imgTags[index].attributes.src.value;
-      imgTags[index].attributes.src.value = `${location.protocol}//${location.host}/remote.php/${this.props.srcPath}/${originSrc}`
+      const src = `${location.protocol}//${location.host}/remote.php/${this.state.srcPath}/${originSrc}`
+      imgTags[index].attributes.src.value = src
     }
   }
+  componentDidUpdate(preProps) {
+    if (preProps.docName != this.props.docName) {
+      $.getJSON(OC.generateUrl(`/apps/mdviewer/files/${this.props.docName}`))
+        .then(res => {
+          this.setState({text: res.text, srcPath: res.srcPath})
+        })
+    }
+    this.parseImageSrcs()
+  }
   render() {
-    this.state.html = marked(this.props.text)
-    const contentText = <div id="md-text" dangerouslySetInnerHTML={{__html: this.state.html}}/>
+    const html = marked(this.state.text)
+    const contentText = <div id="md-text" dangerouslySetInnerHTML={{__html: html}}/>
     return (
       <div id="app-content-wrapper">
         {contentText}

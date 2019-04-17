@@ -11,10 +11,7 @@ export default class Navigation extends React.Component {
   }
   handleClick(name) {
     this.setState({active: name})
-    $.getJSON(OC.generateUrl(`/apps/mdviewer/files/${name}`))
-      .then(res => {
-        this.props.showContent(res.text, res.srcPath)
-      })
+    this.props.setDoc(name)
   }
   componentDidMount() {
     $.getJSON(OC.generateUrl('/apps/mdviewer/files'))
@@ -24,7 +21,8 @@ export default class Navigation extends React.Component {
   }
   render() {
     const docNameElements = this.state.docs.map(doc =>
-      <li className={this.state.active == doc.name ? 'active' : ''} key={doc.name} onClick={() => this.handleClick(doc.name)}>
+      <li className={this.state.active == doc.name ? 'active' : ''} key={doc.name} 
+          onClick={this.state.active != doc.name ? (() => this.handleClick(doc.name)) : () => {}}>
         {doc.name}
       </li>
     )

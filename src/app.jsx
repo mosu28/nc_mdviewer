@@ -11,23 +11,36 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      active: '',
+      activeDoc: '',
       text: '',
       srcPath: ''
     }
   }
-  showContent(text, srcPath) {
-    this.setState({text, srcPath})
+  setDoc(activeDoc) {
+    this.setState({activeDoc})
+  }
+  getQueryParams() {
+    const params = {}
+    const queries = location.href.split('?')[1].split('&').map((v) => v.split('='))
+    for (const [key, value] of queries) {
+      params[key] = value
+    }
+    return params
+  }
+  componentDidMount() {
+    const params = this.getQueryParams()
+    const doc = params['name'] || ''
+    this.setState({activeDoc: doc})
   }
   render() {
     return (
       <div id="app">
         <div id="app-navigation">
-          <Navigation active={this.state.active} showContent={this.showContent.bind(this)}/>
+          <Navigation active={this.state.activeDoc} setDoc={this.setDoc.bind(this)}/>
           <Setting/>
         </div>
         <div id="app-content">
-          <Content text={this.state.text} srcPath={this.state.srcPath}/>
+          <Content docName={this.state.activeDoc} text={this.state.text} srcPath={this.state.srcPath}/>
         </div>
       </div>
     )
