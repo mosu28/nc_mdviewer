@@ -14,7 +14,7 @@ export default class Navigation extends React.Component {
   componentDidMount() {
     $.getJSON(OC.generateUrl('/apps/mdviewer/docs'))
       .then(res => {
-        this.setState({docs: res.files})
+        this.setState({docs: res.docs})
       })
   }
   render() {

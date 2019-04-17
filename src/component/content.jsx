@@ -24,8 +24,9 @@ export default class Content extends React.Component {
         .then(res => {
           this.setState({text: res.text, srcPath: res.srcPath})
         })
+    } else {
+      this.parseImageSrcs()
     }
-    this.parseImageSrcs()
   }
   render() {
     const html = marked(this.state.text)

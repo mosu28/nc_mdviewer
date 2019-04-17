@@ -20,11 +20,11 @@ class MdService {
   }
 
   public function getAll() {
-    $data = ['files' => []];
+    $data = ['docs' => []];
     $path = '/' . $this->userId . '/files/' . $this->settings->get()['settings']->docPath;
     $folder = $this->root->get($path);
     foreach ($folder->getDirectoryListing() as $node) {
-      $data['files'][] = [
+      $data['docs'][] = [
         'name' => $node->getName()
       ];
     }
