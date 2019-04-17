@@ -36,8 +36,8 @@ class MdService {
     $folder = $this->root->get($path);
     $id = $this->getReadmeId($folder);
     $content = $folder->getById($id)[0]->getContent();
-    $srcs = $this->getSrcs($path);
-    return ['text' => $content, 'srcs' => $srcs];
+    $srcPath = '/files/' . $this->settings->get()['settings']->docPath . '/' . $name . '/';
+    return ['text' => $content, 'srcPath' => $srcPath];
   }
 
   private function getReadmeId($folder) {
@@ -47,19 +47,5 @@ class MdService {
       }
     }
     return null;
-  }
-
-  private function getSrcs($path) {
-    $srcs = [];
-    $imagePath = $path . '/images/';
-    if (!$this->root->nodeExists($imagePath)) return [];
-    $folder = $this->root->get($imagePath);
-    foreach ($folder->getDirectoryListing() as $node) {
-      $id = $node->getId();
-      $name = $node->getName();
-      $binary = $folder->getById($id)[0]->getContent();
-      $srcs[$name] = base64_encode($binary);
-    }
-    return $srcs;
   }
 }

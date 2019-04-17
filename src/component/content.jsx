@@ -8,16 +8,15 @@ export default class Content extends React.Component {
       html: ''
     }
   }
-  parseHtml(html, srcs) {
-    let parsedHtml = html
-    for (const [name, base64] of Object.entries(srcs)) {
-      const regexp = new RegExp(`src="\.\/?images/${name}"`, 'g') 
-      parsedHtml = parsedHtml.replace(regexp, `src="data:image/png;base64,${base64}"`)
+  componentDidUpdate() {
+    const imgTags = document.querySelectorAll('#md-text img')
+    for (const [index, value] of imgTags.entries()) {
+      const originSrc = imgTags[index].attributes.src.value;
+      imgTags[index].attributes.src.value = `${location.protocol}//${location.host}/remote.php/${this.props.srcPath}/${originSrc}`
     }
-    return parsedHtml
   }
   render() {
-    this.state.html = this.parseHtml(marked(this.props.text), this.props.srcs)
+    this.state.html = marked(this.props.text)
     const contentText = <div id="md-text" dangerouslySetInnerHTML={{__html: this.state.html}}/>
     return (
       <div id="app-content-wrapper">

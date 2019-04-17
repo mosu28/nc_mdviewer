@@ -11,7 +11,7 @@ export default class Navigation extends React.Component {
   handleClick(name) {
     $.getJSON(OC.generateUrl(`/apps/mdviewer/files/${name}`))
       .then(res => {
-        this.props.showContent(res.text, res.srcs)
+        this.props.showContent(res.text, res.srcPath)
       })
   }
   componentDidMount() {

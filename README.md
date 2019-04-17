@@ -28,13 +28,5 @@ git clone git@github.com:tibimosu/nc_mdviewer.git mdviewer
 
 ```
 <ドキュメント名>/
-    - images/       : 埋め込む画像の保存先
     - README.md     : 表示するMDファイル
-```
-
-## 画像の埋め込み方法
-* MDファイル上で下記のように指定することで埋め込むことができます。
-
-```markdown
-![](./images/<画像ファイル名>.png)
 ```

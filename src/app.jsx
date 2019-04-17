@@ -12,11 +12,11 @@ class App extends React.Component {
     super(props)
     this.state = {
       text: '',
-      srcs: {}
+      srcPath: ''
     }
   }
-  showContent(text, srcs) {
-    this.setState({text, srcs})
+  showContent(text, srcPath) {
+    this.setState({text, srcPath})
   }
   render() {
     return (
@@ -26,7 +26,7 @@ class App extends React.Component {
           <Setting/>
         </div>
         <div id="app-content">
-          <Content text={this.state.text} srcs={this.state.srcs}/>
+          <Content text={this.state.text} srcPath={this.state.srcPath}/>
         </div>
       </div>
     )
