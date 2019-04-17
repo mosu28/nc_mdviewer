@@ -21,7 +21,9 @@ class App extends React.Component {
   }
   getQueryParams() {
     const params = {}
-    const queries = location.href.split('?')[1].split('&').map((v) => v.split('='))
+    const url = location.href
+    if (url.indexOf('?')) return params
+    const queries = url.split('?')[1].split('&').map((v) => v.split('='))
     for (const [key, value] of queries) {
       params[key] = value
     }
