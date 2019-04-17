@@ -20,7 +20,7 @@ export default class Content extends React.Component {
   }
   componentDidUpdate(preProps) {
     if (preProps.docName != this.props.docName) {
-      $.getJSON(OC.generateUrl(`/apps/mdviewer/files/${this.props.docName}`))
+      $.getJSON(OC.generateUrl(`/apps/mdviewer/docs/${this.props.docName}`))
         .then(res => {
           this.setState({text: res.text, srcPath: res.srcPath})
         })
