@@ -5,7 +5,7 @@
     <name>Md Viewer</name>
     <summary>MDファイルをいい感じに閲覧できるアプリ</summary>
     <description><![CDATA[指定したグループフォルダ直下のmdファイルを閲覧することに特化したアプリケーションです。]]></description>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <licence>agpl</licence>
     <author mail="mosu.dev@gmail.com" >mosu</author>
     <namespace>MdViewer</namespace>
