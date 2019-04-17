@@ -4,13 +4,11 @@ export default class Navigation extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      active: props.active,
       docs: []
     }
     this.handleClick = this.handleClick.bind(this)
   }
   handleClick(name) {
-    this.setState({active: name})
     this.props.setDoc(name)
   }
   componentDidMount() {
@@ -20,12 +18,12 @@ export default class Navigation extends React.Component {
       })
   }
   render() {
-    const docNameElements = this.state.docs.map(doc =>
-      <li className={this.state.active == doc.name ? 'active' : ''} key={doc.name} 
-          onClick={this.state.active != doc.name ? (() => this.handleClick(doc.name)) : () => {}}>
-        {doc.name}
-      </li>
-    )
+    const docNameElements = this.state.docs.map(doc => {
+      const decodeDocName = decodeURI(this.props.active)
+      const className = decodeDocName == doc.name ? 'active' : ''
+      const clickEvent = decodeDocName != doc.name ? (() => this.handleClick(doc.name)) : () => {}
+      return <li className={className} key={doc.name} onClick={clickEvent}>{doc.name}</li>
+    })
     return (
       <ul id="md-list">
         {docNameElements}
