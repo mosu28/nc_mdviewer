@@ -10,7 +10,7 @@
 return [
     'routes' => [
        ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-	   ['name' => 'md#index', 'url' => '/files', 'verb' => 'GET'],
+       ['name' => 'md#index', 'url' => '/files', 'verb' => 'GET'],
        ['name' => 'md#get', 'url' => '/files/{name}', 'verb' => 'GET'],
        ['name' => 'settings#set', 'url' => 'settings', 'verb' => 'PUT'],
        ['name' => 'settings#get', 'url' => 'settings', 'verb' => 'GET']

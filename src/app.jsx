@@ -11,6 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      active: '',
       text: '',
       srcPath: ''
     }
@@ -22,7 +23,7 @@ class App extends React.Component {
     return (
       <div id="app">
         <div id="app-navigation">
-          <Navigation showContent={this.showContent.bind(this)}/>
+          <Navigation active={this.state.active} showContent={this.showContent.bind(this)}/>
           <Setting/>
         </div>
         <div id="app-content">

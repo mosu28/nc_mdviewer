@@ -4,11 +4,13 @@ export default class Navigation extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      files: []
+      active: props.active,
+      docs: []
     }
     this.handleClick = this.handleClick.bind(this)
   }
   handleClick(name) {
+    this.setState({active: name})
     $.getJSON(OC.generateUrl(`/apps/mdviewer/files/${name}`))
       .then(res => {
         this.props.showContent(res.text, res.srcPath)
@@ -17,16 +19,18 @@ export default class Navigation extends React.Component {
   componentDidMount() {
     $.getJSON(OC.generateUrl('/apps/mdviewer/files'))
       .then(res => {
-        this.setState({files: res.files})
+        this.setState({docs: res.files})
       })
   }
   render() {
-    const filesElements = this.state.files.map(file =>
-      <li key={file.name}><a href="#" onClick={() => this.handleClick(file.name)}>{file.name}</a></li>
+    const docNameElements = this.state.docs.map(doc =>
+      <li className={this.state.active == doc.name ? 'active' : ''} key={doc.name} onClick={() => this.handleClick(doc.name)}>
+        {doc.name}
+      </li>
     )
     return (
       <ul id="md-list">
-        {filesElements}
+        {docNameElements}
       </ul>
     )
   }

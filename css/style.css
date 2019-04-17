@@ -1,6 +1,5 @@
 #app {
 	width: 100%;
-	float: left;
 }
 
 #app-navigation {
@@ -16,7 +15,18 @@
 #md-list > li {
 	width: 100% !important;
 	margin: 0;
-	padding: 0;
+	padding: 10px 20px;
+	border-bottom: 2px solid #eeeeee;
+}
+
+#md-list > li:hover:not(.active) {
+	background: #eeeeee;
+	font-weight: bold;
+}
+
+#md-list > li.active {
+	font-weight: bold;
+	border-left: 2px #0082C9;
 }
 
 #app-settings {
@@ -34,7 +44,6 @@
 #md-text {
 	width: 90%;
 	margin: 0 auto 0;
-	padding: 20px 0;
 }
 
 #md-text a {
@@ -66,7 +75,7 @@
 }
 
 #md-text h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-  background: url("../../images/modules/styleguide/para.png") no-repeat 10px center;
+	/* background: url("../../images/modules/styleguide/para.png") no-repeat 10px center; */
 	text-decoration: none;
 }
 
